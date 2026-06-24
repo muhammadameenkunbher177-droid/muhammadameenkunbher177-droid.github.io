@@ -7,8 +7,53 @@
     <!-- Google AdSense Verification Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-285708184303816" crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="background-color: #1a1a1a; color: white; font-family: sans-serif; text-align: center; padding: 20px;">
+
     <h1>Welcome to CricZone Hub</h1>
-    <p>Visit our main cricket site: <a href="https://muhammadameenkunbher177-droid.github.io/criczone/">Click Here to Go to CricZone</a></p>
+    <p>Visit our main cricket site: <a href="https://muhammadameenkunbher177-droid.github.io/criczone/" style="color: #00ffcc;">Click Here to Go to CricZone</a></p>
+
+    <!-- LIVE SCORE CARD -->
+    <div id="live-cricket-card" style="background: #111; color: #fff; padding: 20px; border-radius: 10px; text-align: center; max-width: 400px; margin: 30px auto; border: 1px solid #333;">
+        <h3 id="match-title">Loading Match...</h3>
+        <h1 id="match-score" style="color: #00ffcc; margin: 10px 0;">-- / --</h1>
+        <p id="match-status" style="font-style: italic; color: #aaa;">Please wait, fetching live updates...</p>
+    </div>
+
+    <!-- API LIVE UPDATES SCRIPT -->
+    <script>
+    async function fetchLiveScore() {
+        const url = 'https://free-cricbuzz-cricket-api.p.rapidapi.com/cricket-livescores';
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': '231f3d8023mshbb446d916dea655p174f77jsn9570852ce6a0',
+                'x-rapidapi-host': 'free-cricbuzz-cricket-api.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            
+            if (result && result.data && result.data.length > 0) {
+                const firstMatch = result.data[0];
+                document.getElementById('match-title').innerText = firstMatch.title || "Live Match";
+                document.getElementById('match-score').innerText = firstMatch.score || "No score available";
+                document.getElementById('match-status').innerText = firstMatch.status || "Match in progress";
+            } else {
+                document.getElementById('match-status').innerText = "Abhi koi live match nahi chal raha.";
+            }
+        } catch (error) {
+            console.error(error);
+            document.getElementById('match-status').innerText = "Score update karne mein error aaya.";
+        }
+    }
+
+    // Page load hote hi chalne ke liye
+    fetchLiveScore();
+    // Har 30 second baad auto update ke liye
+    setInterval(fetchLiveScore, 30000);
+    </script>
+
 </body>
 </html>
