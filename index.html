@@ -19,8 +19,112 @@
         <p id="match-status" style="font-style: italic; color: #aaa;">Please wait, fetching live updates...</p>
     </div>
 
-    <!-- API LIVE UPDATES SCRIPT -->
+    <!-- UPCOMING ODI WORLD CUP SCHEDULE SECTION -->
+    <div style="margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto; background: #111; padding: 20px; border-radius: 10px; border: 1px solid #333;">
+        <h2 style="color: #ffcc00; margin-top: 0;">🏆 Men's ODI World Cup 2027 Schedule</h2>
+        <p style="color: #aaa; font-size: 14px;">Expected Big Matches Schedule (South Africa, Zimbabwe & Namibia)</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px; text-align: left;">
+            <thead>
+                <tr style="background: #222; color: #00ffcc; border-bottom: 2px solid #333;">
+                    <th style="padding: 10px;">Match</th>
+                    <th style="padding: 10px;">Venue</th>
+                    <th style="padding: 10px;">Expected Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #222;">
+                    <td style="padding: 10px; font-weight: bold;">South Africa vs Pakistan</td>
+                    <td style="padding: 10px; color: #aaa;">Johannesburg</td>
+                    <td style="padding: 10px; color: #00ffcc;">October 2027</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #222;">
+                    <td style="padding: 10px; font-weight: bold; color: #ff3366;">Pakistan vs India (Big Clash)</td>
+                    <td style="padding: 10px; color: #aaa;">Cape Town</td>
+                    <td style="padding: 10px; color: #00ffcc;">October 2027</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #222;">
+                    <td style="padding: 10px; font-weight: bold;">Australia vs England</td>
+                    <td style="padding: 10px; color: #aaa;">Durban</td>
+                    <td style="padding: 10px; color: #00ffcc;">November 2027</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #222;">
+                    <td style="padding: 10px; font-weight: bold;">India vs New Zealand</td>
+                    <td style="padding: 10px; color: #aaa;">Centurion</td>
+                    <td style="padding: 10px; color: #00ffcc;">November 2027</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; font-weight: bold; color: #ffcc00;">ODI World Cup 2027 FINAL</td>
+                    <td style="padding: 10px; color: #aaa;">Johannesburg</td>
+                    <td style="padding: 10px; color: #ffcc00;">November 2027</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CRICKET ARCHIVE SECTION (2023 - PRESENT) -->
+    <div style="margin-top: 50px; max-width: 900px; margin-left: auto; margin-right: auto;">
+        <h2 style="color: #00ffcc; border-bottom: 2px solid #333; display: inline-block; padding-bottom: 10px;">Cricket Match Archive (2023 - Present)</h2>
+        
+        <!-- Category Filter Buttons -->
+        <div style="margin: 20px 0; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button onclick="filterVideos('all')" style="background: #00ffcc; color: black; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">All Matches</button>
+            <button onclick="filterVideos('recent')" style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Recent (2025-2026)</button>
+            <button onclick="filterVideos('2024')" style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">2024 Season</button>
+            <button onclick="filterVideos('2023')" style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">2023 World Cup</button>
+        </div>
+
+        <!-- Video Grid -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+            
+            <!-- Video 1: Recent Match -->
+            <div class="video-card recent" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
+                <span style="background: #00ffcc; color: black; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">WOMEN'S T20 WC</span>
+                <h4 style="margin: 10px 0;">Aus v Pak (Recent)</h4>
+                <iframe width="100%" height="150" src="https://www.youtube.com/embed/2Ee9v1-V7Ko" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <!-- Video 2: 2024 Match -->
+            <div class="video-card 2024" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
+                <span style="background: #ff3366; color: white; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">MEN'S T20 WC 2024</span>
+                <h4 style="margin: 10px 0;">Pak vs Ind Thriller</h4>
+                <iframe width="100%" height="150" src="https://www.youtube.com/embed/fSreZp8j1_M" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <!-- Video 3: 2023 Match -->
+            <div class="video-card 2023" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
+                <span style="background: #ffcc00; color: black; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">ODI WORLD CUP 2023</span>
+                <h4 style="margin: 10px 0;">Pak vs SL Record Chase</h4>
+                <iframe width="100%" height="150" src="https://www.youtube.com/embed/gU9G6R8pS3w" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <!-- Video 4: Recent Match 2 -->
+            <div class="video-card recent" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
+                <span style="background: #00ffcc; color: black; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">WOMEN'S T20 WC</span>
+                <h4 style="margin: 10px 0;">SA v Ind (Recent)</h4>
+                <iframe width="100%" height="150" src="https://www.youtube.com/embed/C9oQ3cickgc" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR FILTER & LIVE SCORE -->
     <script>
+    function filterVideos(category) {
+        const cards = document.getElementsByClassName('video-card');
+        for (let card of cards) {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else {
+                if (card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        }
+    }
+
     async function fetchLiveScore() {
         const url = 'https://free-cricbuzz-cricket-api.p.rapidapi.com/cricket-livescores';
         const options = {
@@ -49,9 +153,7 @@
         }
     }
 
-    // Page load hote hi chalne ke liye
     fetchLiveScore();
-    // Har 30 second baad auto update ke liye
     setInterval(fetchLiveScore, 30000);
     </script>
 
