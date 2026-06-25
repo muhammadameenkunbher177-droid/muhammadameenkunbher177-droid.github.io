@@ -1,18 +1,27 @@
-// AI Voice function jo score ko aawaz mein badlega
-function speakScore(currentScore) {
-    // Agar browser speech support karta hai
-    if ('speechSynthesis' in window) {
-        // AI ko batana ke kya bolna hai
-        let speech = new SpeechSynthesisUtterance();
-        speech.text = currentScore; // Jaise: "India 125 for 3"
-        speech.lang = 'en-US'; // English commentary ke liye
-        speech.rate = 1.0; // Bolne ki speed
-        speech.pitch = 1.1; // Aawaz ki tone (thodi energetic)
+let lastSpokenScore = ""; // Purane score ko yaad rakhne ke liye
 
-        // AI bolna shuru karegi
-        window.speechSynthesis.speak(speech);
+function updateLiveScore(apiData) {
+    // 1. Aapka mojooda score update karne ka code (Example)
+    let currentScoreText = `${apiData.team} ${apiData.runs} for ${apiData.wickets}`; 
+    document.getElementById("score-box").innerText = currentScoreText;
+
+    // 2. AI Voice Logic: Agar score badla hai, sirf tabhi AI bole
+    if (currentScoreText !== lastSpokenScore) {
+        speakScore(currentScoreText);
+        lastSpokenScore = currentScoreText; // Naye score ko save kar lein
     }
 }
 
-// Example: Jab bhi aapki score wali API update ho, aap is function ko call kar dein:
-// speakScore("India is 125 for 3 in 15 overs");
+// Bolne wala main function
+function speakScore(textToSpeak) {
+    if ('speechSynthesis' in window) {
+        // Agar pehle se AI bol rahi hai, toh use pehle rokein (taake naya score foran aaye)
+        window.speechSynthesis.cancel(); 
+
+        let speech = new SpeechSynthesisUtterance(textToSpeak);
+        speech.lang = 'en-US'; 
+        speech.rate = 1.0; 
+        speech.pitch = 1.0; 
+        window.speechSynthesis.speak(speech);
+    }
+}
