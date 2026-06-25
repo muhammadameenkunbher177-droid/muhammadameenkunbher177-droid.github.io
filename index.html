@@ -90,3 +90,34 @@
     </script>
 </body>
 </html>
+<!--! JAVASCRIPT FOR LIVE SCORES -->
+    <script>
+        async function fetchLiveScores() {
+            const container = document.getElementById('live-scores-container');
+            const url = 'https://free-cricbuzz-cricket-api.p.rapidapi.com/cricket-livescores';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '231f3d8023mshbb446d916dea655p174f77jsn9570852ce6a0',
+                    'x-rapidapi-host': 'free-cricbuzz-cricket-api.p.rapidapi.com'
+                }
+            };
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                if (result && result.data && result.data.length > 0) {
+                    container.innerHTML = "";
+                    result.data.forEach(match => {
+                        const matchCard = document.createElement('div');
+                        matchCard.style.cssText = "background: #111; padding: 20px; border-radius: 10px; border: 1px solid #333; min-width: 280px; margin: 10px;";
+                        matchCard.innerHTML = `<h3 style="color: #00ffcc;">${match.title}</h3><p style="font-size: 18px; font-weight: bold;">${match.score}</p><p style="color: #aaa;">${match.status}</p>`;
+                        container.appendChild(matchCard);
+                    });
+                }
+            } catch (error) { console.error(error); }
+        }
+        fetchLiveScores();
+        setInterval(fetchLiveScores, 30000);
+    </script>
+</body>
+</html>
