@@ -1,45 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CricZone Hub</title>
 </head>
-<body style="background-color: #1a1a1a; color: white; font-family: sans-serif; text-align: center; padding: 20px;">
+<body style="background-color: #1a1a1a; color: white; padding: 50px; text-align: center; font-family: sans-serif;">
 
     <h1>CricZone Hub</h1>
-    <p>Visit our main cricket site: <a href="https://muhammadameenkunbher177-droid.github.io/criczone/" style="color: #00ffcc;">Click Here</a></p>
-
-    <h2 style="color: #00ffcc; margin-top: 30px;">Live Cricket Matches</h2>
-    <div id="live-scores-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: auto;">
-        <!-- Score yahan show hoga -->
-        <div id="score-display" style="background: #111; padding: 20px; border-radius: 10px; border: 1px solid #333; min-width: 280px;">
-            Loading live score...
-        </div>
+    <p>Welcome to my cricket website!</p>
+    
+    <div id="score-display" style="border: 1px solid #444; padding: 20px; margin-top: 20px;">
+        Page active hai.
     </div>
 
-    <script>
-        const url = 'https://flashlive-sports.p.rapidapi.com/v1/events/player-statistics-alt?locale=en_INT&event_id=fXx7UfRk';
-        const options = {
-            method: 'GET',
-            headers: {
-                'x-rapidapi-host': 'flashlive-sports.p.rapidapi.com',
-                'x-rapidapi-key': '231f3d8023mshbb446d916dea655p174f77jsn9570852ce6a0'
-            }
-        };
-
-        async function fetchScore() {
-            try {
-                const response = await fetch(url, options);
-                const result = await response.json();
-                document.getElementById('score-display').innerText = JSON.stringify(result, null, 2);
-            } catch (error) {
-                document.getElementById('score-display').innerText = "Error: Data load nahi ho saka.";
-            }
-        }
-
-        setInterval(fetchScore, 30000);
-        fetchScore();
-    </script>
 </body>
 </html>
