@@ -12,11 +12,14 @@
     <h1>Welcome to CricZone Hub</h1>
     <p>Visit our main cricket site: <a href="https://muhammadameenkunbher177-droid.github.io/criczone/" style="color: #00ffcc;">Click Here to Go to CricZone</a></p>
 
-    <!-- LIVE SCORE CARD -->
-    <div id="live-cricket-card" style="background: #111; color: #fff; padding: 20px; border-radius: 10px; text-align: center; max-width: 400px; margin: 30px auto; border: 1px solid #333;">
-        <h3 id="match-title">Loading Match...</h3>
-        <h1 id="match-score" style="color: #00ffcc; margin: 10px 0;">-- / --</h1>
-        <p id="match-status" style="font-style: italic; color: #aaa;">Please wait, fetching live updates...</p>
+    <!-- MULTIPLE LIVE SCORES CONTAINER -->
+    <h2 style="color: #00ffcc; margin-top: 30px;">🔴 Live Cricket Matches</h2>
+    <div id="live-scores-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto; padding: 10px;">
+        <!-- Dynamic Match Cards will insert here -->
+        <div style="background: #111; padding: 20px; border-radius: 10px; border: 1px solid #333; min-width: 280px;">
+            <h3>Loading Live Matches...</h3>
+            <p style="color: #aaa; font-style: italic;">Fetching multi-match live updates...</p>
+        </div>
     </div>
 
     <!-- UPCOMING ODI WORLD CUP SCHEDULE SECTION -->
@@ -76,39 +79,31 @@
 
         <!-- Video Grid -->
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
-            
-            <!-- Video 1: Recent Match -->
+            <!-- Videos -->
             <div class="video-card recent" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
                 <span style="background: #00ffcc; color: black; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">WOMEN'S T20 WC</span>
                 <h4 style="margin: 10px 0;">Aus v Pak (Recent)</h4>
                 <iframe width="100%" height="150" src="https://www.youtube.com/embed/2Ee9v1-V7Ko" frameborder="0" allowfullscreen></iframe>
             </div>
-
-            <!-- Video 2: 2024 Match -->
             <div class="video-card 2024" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
                 <span style="background: #ff3366; color: white; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">MEN'S T20 WC 2024</span>
                 <h4 style="margin: 10px 0;">Pak vs Ind Thriller</h4>
                 <iframe width="100%" height="150" src="https://www.youtube.com/embed/fSreZp8j1_M" frameborder="0" allowfullscreen></iframe>
             </div>
-
-            <!-- Video 3: 2023 Match -->
             <div class="video-card 2023" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
                 <span style="background: #ffcc00; color: black; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">ODI WORLD CUP 2023</span>
                 <h4 style="margin: 10px 0;">Pak vs SL Record Chase</h4>
                 <iframe width="100%" height="150" src="https://www.youtube.com/embed/gU9G6R8pS3w" frameborder="0" allowfullscreen></iframe>
             </div>
-
-            <!-- Video 4: Recent Match 2 -->
             <div class="video-card recent" style="background: #111; padding: 15px; border-radius: 8px; border: 1px solid #333; max-width: 260px; flex: 1 1 250px;">
                 <span style="background: #00ffcc; color: black; font-size: 12px; padding: 3px 8px; border-radius: 3px; font-weight: bold;">WOMEN'S T20 WC</span>
                 <h4 style="margin: 10px 0;">SA v Ind (Recent)</h4>
                 <iframe width="100%" height="150" src="https://www.youtube.com/embed/C9oQ3cickgc" frameborder="0" allowfullscreen></iframe>
             </div>
-
         </div>
     </div>
 
-    <!-- JAVASCRIPT FOR FILTER & LIVE SCORE -->
+    <!-- JAVASCRIPT FOR MULTI-MATCH SCORES & FILTER -->
     <script>
     function filterVideos(category) {
         const cards = document.getElementsByClassName('video-card');
@@ -125,7 +120,7 @@
         }
     }
 
-    async function fetchLiveScore() {
+    async function fetchLiveScores() {
         const url = 'https://free-cricbuzz-cricket-api.p.rapidapi.com/cricket-livescores';
         const options = {
             method: 'GET',
@@ -138,23 +133,41 @@
         try {
             const response = await fetch(url, options);
             const result = await response.json();
+            const container = document.getElementById('live-scores-container');
             
             if (result && result.data && result.data.length > 0) {
-                const firstMatch = result.data[0];
-                document.getElementById('match-title').innerText = firstMatch.title || "Live Match";
-                document.getElementById('match-score').innerText = firstMatch.score || "No score available";
-                document.getElementById('match-status').innerText = firstMatch.status || "Match in progress";
+                container.innerHTML = ""; // Clear old message
+                
+                // Loop through all available live matches and create a card for each
+                result.data.forEach(match => {
+                    const matchCard = document.createElement('div');
+                    matchCard.style.cssText = "background: #111; color: #fff; padding: 20px; border-radius: 10px; text-align: center; min-width: 280px; max-width: 320px; flex: 1 1 280px; border: 1px solid #333; box-shadow: 0 4px 8px rgba(0,0,0,0.5);";
+                    
+                    matchCard.innerHTML = `
+                        <h3 style="font-size: 16px; margin-bottom: 10px; height: 40px; overflow: hidden; color: #eee;">${match.title || 'Live Match'}</h3>
+                        <h2 style="color: #00ffcc; margin: 10px 0; font-size: 22px;">${match.score || '-- / --'}</h2>
+                        <p style="font-style: italic; color: #aaa; font-size: 13px; margin-top: 10px;">${match.status || 'Match in progress'}</p>
+                    `;
+                    container.appendChild(matchCard);
+                });
             } else {
-                document.getElementById('match-status').innerText = "Abhi koi live match nahi chal raha.";
+                container.innerHTML = `
+                    <div style="background: #111; padding: 20px; border-radius: 10px; border: 1px solid #333; width: 100%;">
+                        <p style="color: #aaa; font-size: 16px;">Abhi koi live match nahi chal raha.</p>
+                    </div>`;
             }
         } catch (error) {
             console.error(error);
-            document.getElementById('match-status').innerText = "Score update karne mein error aaya.";
+            document.getElementById('live-scores-container').innerHTML = `
+                <div style="background: #111; padding: 20px; border-radius: 10px; border: 1px solid #ff3366; width: 100%;">
+                    <p style="color: #ff3366; font-size: 16px;">Score updates fetch karne mein error aaya.</p>
+                </div>`;
         }
     }
 
-    fetchLiveScore();
-    setInterval(fetchLiveScore, 30000);
+    // Run automatically
+    fetchLiveScores();
+    setInterval(fetchLiveScores, 30000); // Updates every 30 seconds
     </script>
 
 </body>
