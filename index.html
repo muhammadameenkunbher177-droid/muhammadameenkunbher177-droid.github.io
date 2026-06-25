@@ -1,27 +1,29 @@
-let lastSpokenScore = ""; // Purane score ko yaad rakhne ke liye
+<!-- === CRICZONE EXTRA HIGH-VALUE CONTENT FOR ADSENSE === -->
+<hr style="border: 1px solid #333; margin: 40px 0;">
 
-function updateLiveScore(apiData) {
-    // 1. Aapka mojooda score update karne ka code (Example)
-    let currentScoreText = `${apiData.team} ${apiData.runs} for ${apiData.wickets}`; 
-    document.getElementById("score-box").innerText = currentScoreText;
+<!-- 1. About CricZone Section -->
+<section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-bottom: 20px; color: #fff; font-family: sans-serif;">
+    <h2 style="color: #00ff00; margin-top: 0;">🏏 About CricZone</h2>
+    <p>Welcome to <strong>CricZone</strong>, your ultimate destination for real-time cricket updates, live scores, and ball-by-ball commentary. We are dedicated to providing cricket enthusiasts worldwide with the fastest updates on all international and major domestic cricket tournaments, including men's and women's matches.</p>
+</section>
 
-    // 2. AI Voice Logic: Agar score badla hai, sirf tabhi AI bole
-    if (currentScoreText !== lastSpokenScore) {
-        speakScore(currentScoreText);
-        lastSpokenScore = currentScoreText; // Naye score ko save kar lein
-    }
-}
+<!-- 2. Today's Featured Matches Content -->
+<section style="background-color: #1a1a1a; padding: 20px; border-radius: 8px; margin-bottom: 20px; color: #fff; font-family: sans-serif;">
+    <h3 style="color: #00ff00; margin-top: 0;">🔥 ICC Women's T20 World Cup 2026 - Today's Featured Matches</h3>
+    <p>The ICC Women's T20 World Cup 2026 is heating up! Today features two massive encounters that you can follow live right here on CricZone:</p>
+    <ul>
+        <li><strong>India Women vs Bangladesh Women:</strong> A crucial Group A clash live from Old Trafford, Manchester. Both teams are fighting hard for points to secure their spot in the next stage.</li>
+        <li><strong>South Africa Women vs Netherlands Women:</strong> An exciting battle under the lights at Bristol. Expect fireworks as South Africa seeks to dominate.</li>
+    </ul>
+</section>
 
-// Bolne wala main function
-function speakScore(textToSpeak) {
-    if ('speechSynthesis' in window) {
-        // Agar pehle se AI bol rahi hai, toh use pehle rokein (taake naya score foran aaye)
-        window.speechSynthesis.cancel(); 
-
-        let speech = new SpeechSynthesisUtterance(textToSpeak);
-        speech.lang = 'en-US'; 
-        speech.rate = 1.0; 
-        speech.pitch = 1.0; 
-        window.speechSynthesis.speak(speech);
-    }
-}
+<!-- 3. Mandatory Footer Links for AdSense -->
+<footer style="text-align: center; padding: 20px; color: #888; font-family: sans-serif; font-size: 14px;">
+    <p>© 2026 CricZone. All Rights Reserved.</p>
+    <p>
+        <a href="#" style="color: #00ff00; text-decoration: none; margin: 0 10px;">Home</a> | 
+        <a href="#" style="color: #00ff00; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+        <a href="#" style="color: #00ff00; text-decoration: none; margin: 0 10px;">Contact Us</a>
+    </p>
+</footer>
+<!-- ==================================================== -->
