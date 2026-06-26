@@ -1,51 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-        .main-wrapper { display: flex; justify-content: center; gap: 20px; align-items: flex-start; }
-
-        /* Rivalry Boxes */
-        .rivalry-box { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; width: 220px; border: 1px solid #333; }
-        .player-img { width: 80px; height: 80px; border-radius: 50%; display: block; margin: 10px auto; background: #333; }
-
-        /* Middle Section */
-        .middle-section { width: 500px; display: flex; flex-direction: column; gap: 10px; }
-        
-        /* Bat Ball Wicket Section (Bari Size) */
-        .header-graphic { background: #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #333; }
-        .header-graphic img { width: 150px; height: auto; }
-
-        /* Stats Box */
-        .stats-box { background: #1a1a1a; padding: 20px; border-radius: 15px; border: 2px solid #ff4500; text-align: center; }
-    </style>
-</head>
-<body>
-
-<div class="main-wrapper">
-    <div class="rivalry-box">
-        <h3>WEST SIDE RIVALRY</h3>
-        <img src="babar.jpg" class="player-img"><p>Babar Azam</p>
-        <img src="rizwan.jpg" class="player-img"><p>Mohammad Rizwan</p>
+<section class="criczone-dashboard">
+    <!-- Stats Heading -->
+    <div class="stats-header">
+        <h2>Historic Head-to-Head Stats (All Formats)</h2>
     </div>
 
-    <div class="middle-section">
-        <div class="header-graphic">
-            <img src="bat_ball_wicket.png" alt="Cricket Icon">
+    <!-- Container for Records -->
+    <div class="records-grid">
+        <!-- Pak vs India Box -->
+        <div class="record-card">
+            <h3>PAKISTAN vs. INDIA: Historic Records</h3>
+            <div class="stats-row">
+                <span>Total Matches: 212</span>
+                <span>Pakistan Wins: 88</span>
+                <span>India Wins: 81</span>
+                <span>Draws/NR: 43</span>
+            </div>
         </div>
-        <div class="stats-box">
-            <h2>Historic Head-to-Head Stats</h2>
-            <p>PAKISTAN vs. INDIA: Total 212 | Pak 88 | India 81 | Draws 43</p>
-            <p>PAKISTAN vs. AUSTRALIA: Total 217 | Pak 68 | Aus 123 | Draws 26</p>
+
+        <!-- Pak vs Australia Box -->
+        <div class="record-card">
+            <h3>PAKISTAN vs. AUSTRALIA: Men's Head-to-Head Stats (Since 1956)</h3>
+            <div class="stats-row">
+                <span>Total Matches: 217</span>
+                <span>Pakistan Wins: 68</span>
+                <span>Australia Wins: 123</span>
+                <span>Draws: 26</span>
+            </div>
         </div>
     </div>
-
-    <div class="rivalry-box">
-        <h3>EAST SIDE RIVALRY</h3>
-        <img src="kohli.jpg" class="player-img"><p>Virat Kohli</p>
-        <img src="rohit.jpg" class="player-img"><p>Rohit Sharma</p>
-    </div>
-</div>
-
-</body>
-</html>
+</section>
