@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricZone Hub</title>
     <style>
-        body { background-color: #0d0d0d; color: white; font-family: sans-serif; padding: 20px; }
+        body { background-color: #0d0d0d; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
         .container { max-width: 900px; margin: auto; }
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 30px; }
-        .video-item { background: #1a1a1a; padding: 10px; border-radius: 10px; }
-        iframe { width: 100%; height: 150px; border-radius: 8px; border: none; }
+        
+        /* Glassmorphism Hero Card */
+        .hero-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .logo-box { display: inline-block; padding: 15px 30px; background: #daa520; color: black; font-weight: bold; border-radius: 10px; margin-bottom: 15px; font-size: 20px; }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; border-bottom: 1px solid #444; text-align: center; }
+        
+        .live-badge { color: #ff4d4d; font-weight: bold; animation: blink 1s infinite; margin-top: 10px; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Aapka purana content yahan rahega -->
-        
-        <!-- Video Section -->
-        <h2>Latest Cricket Videos</h2>
-        <div class="video-grid">
-            <!-- 12 Video Placeholders -->
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
-            <div class="video-item"><iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe></div>
+        <div class="hero-card">
+            <div class="logo-box">CRICZONE HUB</div>
+            <p>Abhi ye match ID active nahi hai: 123456</p>
+            <div class="live-badge">● LIVE STATUS: MATCH INACTIVE</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="box">
+                <h3>Top Score</h3>
+                <table><tr><th>Player</th><th>Runs</th></tr><tr><td>E. Perry</td><td>113*</td></tr></table>
+            </div>
+            <div class="box">
+                <h3>Most Wickets</h3>
+                <table><tr><th>Player</th><th>Wkts</th></tr><tr><td>A. King</td><td>15</td></tr></table>
+            </div>
         </div>
     </div>
 </body>
