@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CricZone Hub</title>
+    <title>CricZone Hub | Live</title>
     <style>
-        body { background-color: #121212; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
         .container { max-width: 900px; margin: auto; }
-        .hero-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); }
+        
+        /* Logo Styling */
+        .logo-box { text-align: center; margin-bottom: 10px; }
+        .logo-circle { width: 80px; height: 80px; background: linear-gradient(45deg, #00d2ff, #3a7bd5); 
+                       border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+                       margin: 0 auto 15px; font-weight: bold; font-size: 24px; color: white; border: 4px solid #fff; }
+
+        .hero-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 30px; 
+                     border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
+        
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
-        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden; }
-        th, td { padding: 10px; border: 1px solid #444; text-align: center; }
-        .live-badge { color: #ff4d4d; font-weight: bold; animation: blink 1s infinite; }
+        .box { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 8px; border-bottom: 1px solid #333; text-align: center; }
+        
+        .live-badge { color: #ff4d4d; font-weight: bold; animation: blink 1s infinite; margin-top: 10px; }
         @keyframes blink { 50% { opacity: 0; } }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-top: 30px; }
-        .box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="hero-card">
+            <div class="logo-box">
+                <div class="logo-circle">CZ</div>
+            </div>
             <h1>CricZone Hub</h1>
             <p>Abhi ye match ID active nahi hai: 123456</p>
             <div class="live-badge">● LIVE STATUS: MATCH INACTIVE</div>
@@ -42,11 +55,6 @@
                     <tr><td>D. Vaidya</td><td>13</td></tr>
                 </table>
             </div>
-        </div>
-
-        <div class="footer-grid">
-            <div class="box"><h3>Videos</h3><p>Top Catch Highlights...</p></div>
-            <div class="box"><h3>Social Links</h3><p>YT | Insta | Twitter</p></div>
         </div>
     </div>
 </body>
