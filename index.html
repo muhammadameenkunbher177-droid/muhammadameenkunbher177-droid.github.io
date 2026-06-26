@@ -1,175 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Stats Dashboard</title>
-    <style>
-        body {
-            background-color: #000; /* Pura page black */
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            color: #fff; /* White text */
-        }
-
-        .main-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 50px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* Side Panels for Rivalries */
-        .rivalry-panel {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-
-        .rivalry-panel h3 {
-            color: #ff9800; /* Gold heading */
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        /* Player Image Container */
-        .player-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: block;
-            margin: 10px auto;
-            background: #333; /* Dark circle background for placeholder */
-            object-fit: cover; /* Images fit perfectly */
-        }
-
-        /* Central Column */
-        .central-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 500px;
-        }
-
-        /* 1. TOP SECTION: Bat, Ball, Wicket Graphic */
-        .header-graphic {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: -20px; /* Stats box ke kareeb karne ke liye */
-            z-index: 2; /* Box ke upar dikhane ke liye */
-        }
-
-        .header-graphic img {
-            max-width: 90%; /* Badi size */
-            height: auto;
-        }
-
-        /* 2. MIDDLE SECTION: Stats Box */
-        .stats-box {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 30px 20px;
-            width: 100%;
-            text-align: center;
-            border: 1px solid #333;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            margin-top: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-box h2 {
-            color: #fff;
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-        }
-
-        /* Match Detail Rows */
-        .match-row {
-            border-radius: 8px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .match-row-content {
-            border: 1px solid #e74c3c; /* Red border for match content */
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .match-row h4 {
-            margin: 0 0 10px 0;
-            color: #ff9800; /* Gold */
-            font-size: 1rem;
-        }
-
-        .match-row p {
-            margin: 0;
-            font-size: 1rem;
-            color: #e6e6e6; /* White text */
-        }
-
-        /* Last Row (Pakistan vs Australia) */
-        .last-row {
-            margin-bottom: 0;
-        }
-        
-    </style>
+<style>
+    body { background-color: #000; color: #fff; font-family: sans-serif; margin: 0; }
+    .container { display: flex; justify-content: center; gap: 20px; padding: 20px; align-items: flex-start; }
+    
+    /* Sides */
+    .side-box { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; width: 220px; }
+    .side-box img { width: 80px; height: 80px; border-radius: 50%; display: block; margin: 5px auto; }
+    
+    /* Middle */
+    .middle-box { width: 500px; text-align: center; }
+    .header-elements { width: 100%; height: 150px; background: #333; margin-bottom: 20px; border-radius: 10px; display: flex; justify-content: center; align-items: center; } /* Yahan apni cricket image lagayein */
+    .stats-card { background: #1a1a1a; border: 2px solid #ff4500; padding: 20px; border-radius: 15px; }
+</style>
 </head>
 <body>
 
-<div class="main-container">
-
-    <div class="rivalry-panel">
+<div class="container">
+    <div class="side-box">
         <h3>WEST SIDE RIVALRY</h3>
-        <img src="babar.jpg" class="player-img" alt="Babar Azam">
-        <p>Babar Azam</p>
-        <img src="rizwan.jpg" class="player-img" alt="Mohammad Rizwan">
-        <p>Mohammad Rizwan</p>
+        <img src="babar.jpg" alt="Babar"> <p>Babar Azam</p>
+        <img src="rizwan.jpg" alt="Rizwan"> <p>Mohammad Rizwan</p>
     </div>
 
-    <div class="central-column">
-        
-        <div class="header-graphic">
-            <img src="cricket-header.png" alt="Cricket Elements">
+    <div class="middle-box">
+        <div class="header-elements">
+            <img src="cricket_elements.png" alt="Bat Ball Wicket" style="max-width: 100%; height: auto;">
         </div>
-
-        <div class="stats-box">
+        <div class="stats-card">
             <h2>Historic Head-to-Head Stats</h2>
-            
-            <div class="match-row">
-                <div class="match-row-content">
-                    <h4>PAKISTAN vs. INDIA</h4>
-                    <p>Total: 212 | Pak: 88 | India: 81 | Draws: 43</p>
-                </div>
-            </div>
-
-            <div class="match-row last-row">
-                <div class="match-row-content">
-                    <h4>PAKISTAN vs. AUSTRALIA</h4>
-                    <p>Total: 217 | Pak: 68 | Aus: 123 | Draws: 26</p>
-                </div>
-            </div>
+            <p>PAKISTAN vs. INDIA: Total 212 | Pak 88 | India 81 | Draws 43</p>
+            <p>PAKISTAN vs. AUSTRALIA: Total 217 | Pak 68 | Aus 123 | Draws 26</p>
         </div>
     </div>
 
-    <div class="rivalry-panel">
+    <div class="side-box">
         <h3>EAST SIDE RIVALRY</h3>
-        <img src="kohli.jpg" class="player-img" alt="Virat Kohli">
-        <p>Virat Kohli</p>
-        <img src="rohit.jpg" class="player-img" alt="Rohit Sharma">
-        <p>Rohit Sharma</p>
+        <img src="kohli.jpg" alt="Kohli"> <p>Virat Kohli</p>
+        <img src="rohit.jpg" alt="Rohit"> <p>Rohit Sharma</p>
     </div>
-
 </div>
 
 </body>
