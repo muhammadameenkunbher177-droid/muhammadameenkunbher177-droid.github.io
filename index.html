@@ -1,34 +1,171 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-    body {
-        background-color: #1a1a1a;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-    }
-    .card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 40px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        text-align: center;
-        color: white;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+        }
+
+        /* Unique Glassmorphism Card (for the main message) */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        /* Tournament Content Area */
+        .content-container {
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .section-title {
+            margin-top: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        /* Stats Table Styles */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .stats-table th, .stats-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-table th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: cyan; /* Accent color for th */
+        }
+
+        /* Video Section Styles */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-box iframe {
+            width: 100%;
+            height: 157px; /* 16:9 ratio for mobile */
+            border: none;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .card, .content-container { width: 95%; padding: 20px; }
+            .stats-table th, .stats-table td { font-size: 14px; padding: 8px; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>CricZone Hub</h1>
-    <p>Abhi ye match ID active nahi hai: 123456</p>
-</div>
+    <!-- Main Message Card (Unique Design) -->
+    <div class="card">
+        <h1>CricZone Hub</h1>
+        <p>Abhi ye match ID active nahi hai: 123456</p>
+        <p><i>Live stream shuru hone ka intezar karein. Tab tak tournament stats dekhein.</i></p>
+    </div>
+
+    <!-- Tournament Content (History, Stats, Videos) -->
+    <div class="content-container">
+
+        <h2 class="section-title">Women's T20 World Cup: Tournament Stats</h2>
+        <p>Is tournament ki puri tareekh aur sabse zyada score banane walay khiladi.</p>
+
+        <!-- (Dummy) Leading Run Scorers Table -->
+        <h3>Leading Run Scorers</h3>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Team</th>
+                    <th>Runs</th>
+                    <th>Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Marrone Khaka</td>
+                    <td>SA-W</td>
+                    <td>190</td>
+                    <td>47.50</td>
+                </tr>
+                <tr>
+                    <td>Beth Mooney</td>
+                    <td>AUS-W</td>
+                    <td>178</td>
+                    <td>44.50</td>
+                </tr>
+                <tr>
+                    <td>Nat Sciver-Brunt</td>
+                    <td>ENG-W</td>
+                    <td>165</td>
+                    <td>41.25</td>
+                </tr>
+                <tr>
+                    <td>Pakistan Best Scorer</td>
+                    <td>PAK-W</td>
+                    <td>120</td>
+                    <td>30.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Featured Videos & Stream Placeholder</h2>
+        <p>Tournament ke highlights aur hamari live stream ke placeholders.</p>
+
+        <div class="video-container">
+            <!-- Video 1 (Placeholder for Your Live Stream - Replace 'YOUR_STREAM_ID' when ready) -->
+            <div class="video-box">
+                <h4>Main Stream Placeholder</h4>
+                <iframe src="https://www.youtube.com/embed/LIVE_STREAM_ID_HERE" title="Live Stream Placeholder" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>Hamari live stream yahan dikhayi degi.</p>
+            </div>
+
+            <!-- Video 2 (Placeholder for Highlights - Replace 'HIGHLGHT_ID_HERE') -->
+            <div class="video-box">
+                <h4>Match Highlights</h4>
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="Match Highlights" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>Pichle match ke highlights.</p>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
