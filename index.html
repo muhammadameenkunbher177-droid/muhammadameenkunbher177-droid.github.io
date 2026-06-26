@@ -1,37 +1,20 @@
 <!DOCTYPE html>
 <html>
-<body style="background-color: #1a1a1a; color: white; text-align: center; font-family: sans-serif;">
+<head>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
 
     <h1>CricZone Hub</h1>
-    <div id="score-display" style="padding: 20px;">
-        Data update ho raha hai...
-    </div>
+    <p>Abhi ye match ID active nahi hai: 123456</p>
 
-    <script>
-        // Yahan se aap ID badal sakte hain
-        const matchId = '123456'; 
-        const url = 'https://flashlive-sports.p.rapidapi.com/v1/events/player-statistics-alt?locale=en_INT&event_id=' + matchId;
-        
-        const options = {
-            method: 'GET',
-            headers: {
-                'x-rapidapi-host': 'flashlive-sports.p.rapidapi.com',
-                'x-rapidapi-key': '231f3d8023mshbb446d916dea655p174f77jsn9570852ce6a0'
-            }
-        };
-
-        async function fetchScore() {
-            try {
-                const response = await fetch(url, options);
-                const result = await response.json();
-                
-                // Agar ID ghalat ho toh ye dikhaye ga
-                document.getElementById('score-display').innerText = "Abhi ye match ID active nahi hai: " + matchId;
-            } catch (error) {
-                document.getElementById('score-display').innerText = "Error: Check karein.";
-            }
-        }
-        fetchScore();
-    </script>
 </body>
 </html>
