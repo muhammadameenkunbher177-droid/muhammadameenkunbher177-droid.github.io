@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CricZone Hub | Live & Stats</title>
+    <title>CricZone Hub | Live Scores & Stats</title>
     <style>
         body { background-color: #1a1a1a; color: white; text-align: center; font-family: sans-serif; padding: 10px; margin: 0; }
         .full-width { width: 100%; max-width: 900px; margin: auto; }
         .box { background-color: #2a2a2a; padding: 20px; border-radius: 15px; border: 2px solid #00ffcc; margin-top: 20px; }
-        .live-badge { background-color: #ff0000; color: white; padding: 10px; font-weight: bold; border-radius: 5px; margin-bottom: 10px; display: inline-block; }
-        iframe { width: 100%; height: 400px; border-radius: 10px; border: 2px solid #ff0000; }
+        
+        /* Live Score Button Style */
+        .live-btn { background-color: #ff0000; color: white; padding: 20px 40px; font-size: 20px; text-decoration: none; font-weight: bold; border-radius: 10px; display: inline-block; transition: 0.3s; border: 2px solid #fff; }
+        .live-btn:hover { background-color: #cc0000; transform: scale(1.05); }
+        
         .stats-text { text-align: left; color: #fff; }
         h2 { color: #00ffcc; }
     </style>
@@ -17,10 +20,10 @@
 <div class="full-width">
     <h1>CricZone Hub</h1>
     
-    <!-- Live Section -->
-    <div class="live-badge">🔴 NOW LIVE: Pakistan Women's Match</div>
-    <div class="box" style="border-color: #ff0000;">
-        <iframe src="YAHAN_APNA_YOUTUBE_EMBED_LINK_LAGAYEIN" frameborder="0" allowfullscreen></iframe>
+    <!-- Live Score Button -->
+    <div class="box" style="border-color: #ff4444;">
+        <p>Match live hai, score check karne ke liye niche click karein:</p>
+        <a href="YAHAN_SCORE_KA_LINK_DAALEIN" class="live-btn" target="_blank">🔴 CLICK HERE FOR LIVE SCORE</a>
     </div>
 
     <!-- Stats Section -->
