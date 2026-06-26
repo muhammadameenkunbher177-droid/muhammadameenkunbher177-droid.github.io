@@ -1,31 +1,45 @@
-<section class="criczone-dashboard">
-    <!-- Stats Heading -->
-    <div class="stats-header">
-        <h2>Historic Head-to-Head Stats (All Formats)</h2>
-    </div>
-
-    <!-- Container for Records -->
-    <div class="records-grid">
-        <!-- Pak vs India Box -->
-        <div class="record-card">
-            <h3>PAKISTAN vs. INDIA: Historic Records</h3>
-            <div class="stats-row">
-                <span>Total Matches: 212</span>
-                <span>Pakistan Wins: 88</span>
-                <span>India Wins: 81</span>
-                <span>Draws/NR: 43</span>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricZone Hub</title>
+    <style>
+        body { background-color: #0d0d0d; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: auto; }
+        
+        /* Glassmorphism Hero Card */
+        .hero-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .logo-box { display: inline-block; padding: 15px 30px; background: #daa520; color: black; font-weight: bold; border-radius: 10px; margin-bottom: 15px; font-size: 20px; }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; border-bottom: 1px solid #444; text-align: center; }
+        
+        .live-badge { color: #ff4d4d; font-weight: bold; animation: blink 1s infinite; margin-top: 10px; }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-card">
+            <div class="logo-box">CRICZONE HUB</div>
+            <p>Abhi ye match ID active nahi hai: 123456</p>
+            <div class="live-badge">● LIVE STATUS: MATCH INACTIVE</div>
         </div>
 
-        <!-- Pak vs Australia Box -->
-        <div class="record-card">
-            <h3>PAKISTAN vs. AUSTRALIA: Men's Head-to-Head Stats (Since 1956)</h3>
-            <div class="stats-row">
-                <span>Total Matches: 217</span>
-                <span>Pakistan Wins: 68</span>
-                <span>Australia Wins: 123</span>
-                <span>Draws: 26</span>
+        <div class="stats-grid">
+            <div class="box">
+                <h3>Top Score</h3>
+                <table><tr><th>Player</th><th>Runs</th></tr><tr><td>E. Perry</td><td>113*</td></tr></table>
+            </div>
+            <div class="box">
+                <h3>Most Wickets</h3>
+                <table><tr><th>Player</th><th>Wkts</th></tr><tr><td>A. King</td><td>15</td></tr></table>
             </div>
         </div>
     </div>
-</section>
+</body>
+</html>
