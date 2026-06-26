@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-    body { background-color: #000; color: #fff; font-family: sans-serif; margin: 0; }
-    .container { display: flex; justify-content: center; gap: 20px; padding: 20px; align-items: flex-start; }
-    
-    /* Sides */
-    .side-box { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; width: 220px; }
-    .side-box img { width: 80px; height: 80px; border-radius: 50%; display: block; margin: 5px auto; }
-    
-    /* Middle */
-    .middle-box { width: 500px; text-align: center; }
-    .header-elements { width: 100%; height: 150px; background: #333; margin-bottom: 20px; border-radius: 10px; display: flex; justify-content: center; align-items: center; } /* Yahan apni cricket image lagayein */
-    .stats-card { background: #1a1a1a; border: 2px solid #ff4500; padding: 20px; border-radius: 15px; }
-</style>
+    <style>
+        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .main-wrapper { display: flex; justify-content: center; gap: 20px; align-items: flex-start; }
+
+        /* Rivalry Boxes */
+        .rivalry-box { background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center; width: 220px; border: 1px solid #333; }
+        .player-img { width: 80px; height: 80px; border-radius: 50%; display: block; margin: 10px auto; background: #333; }
+
+        /* Middle Section */
+        .middle-section { width: 500px; display: flex; flex-direction: column; gap: 10px; }
+        
+        /* Bat Ball Wicket Section (Bari Size) */
+        .header-graphic { background: #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #333; }
+        .header-graphic img { width: 150px; height: auto; }
+
+        /* Stats Box */
+        .stats-box { background: #1a1a1a; padding: 20px; border-radius: 15px; border: 2px solid #ff4500; text-align: center; }
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="side-box">
+<div class="main-wrapper">
+    <div class="rivalry-box">
         <h3>WEST SIDE RIVALRY</h3>
-        <img src="babar.jpg" alt="Babar"> <p>Babar Azam</p>
-        <img src="rizwan.jpg" alt="Rizwan"> <p>Mohammad Rizwan</p>
+        <img src="babar.jpg" class="player-img"><p>Babar Azam</p>
+        <img src="rizwan.jpg" class="player-img"><p>Mohammad Rizwan</p>
     </div>
 
-    <div class="middle-box">
-        <div class="header-elements">
-            <img src="cricket_elements.png" alt="Bat Ball Wicket" style="max-width: 100%; height: auto;">
+    <div class="middle-section">
+        <div class="header-graphic">
+            <img src="bat_ball_wicket.png" alt="Cricket Icon">
         </div>
-        <div class="stats-card">
+        <div class="stats-box">
             <h2>Historic Head-to-Head Stats</h2>
             <p>PAKISTAN vs. INDIA: Total 212 | Pak 88 | India 81 | Draws 43</p>
             <p>PAKISTAN vs. AUSTRALIA: Total 217 | Pak 68 | Aus 123 | Draws 26</p>
         </div>
     </div>
 
-    <div class="side-box">
+    <div class="rivalry-box">
         <h3>EAST SIDE RIVALRY</h3>
-        <img src="kohli.jpg" alt="Kohli"> <p>Virat Kohli</p>
-        <img src="rohit.jpg" alt="Rohit"> <p>Rohit Sharma</p>
+        <img src="kohli.jpg" class="player-img"><p>Virat Kohli</p>
+        <img src="rohit.jpg" class="player-img"><p>Rohit Sharma</p>
     </div>
 </div>
 
