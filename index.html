@@ -1,51 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CricZone Hub | Live Scores & Stats</title>
-    <style>
-        body { background-color: #1a1a1a; color: white; text-align: center; font-family: sans-serif; padding: 10px; margin: 0; }
-        .full-width { width: 100%; max-width: 900px; margin: auto; }
-        .box { background-color: #2a2a2a; padding: 20px; border-radius: 15px; border: 2px solid #00ffcc; margin-top: 20px; }
-        
-        /* Live Score Button Style */
-        .live-btn { background-color: #ff0000; color: white; padding: 20px 40px; font-size: 20px; text-decoration: none; font-weight: bold; border-radius: 10px; display: inline-block; transition: 0.3s; border: 2px solid #fff; }
-        .live-btn:hover { background-color: #cc0000; transform: scale(1.05); }
-        
-        .stats-text { text-align: left; color: #fff; }
-        h2 { color: #00ffcc; }
-    </style>
-</head>
-<body>
-
-<div class="full-width">
-    <h1>CricZone Hub</h1>
-    
-    <!-- Live Score Button -->
-    <div class="box" style="border-color: #ff4444;">
-        <p>Match live hai, score check karne ke liye niche click karein:</p>
-        <!-- Cricbuzz ka link add kar diya gaya hai -->
-        <a href="https://www.cricbuzz.com/live-cricket-scores" class="live-btn" target="_blank">🔴 CLICK HERE FOR LIVE SCORE</a>
-    </div>
-
-    <!-- Stats Section -->
-    <div class="box">
-        <h2>🔥 Magic Moments & Stats</h2>
-        <div class="stats-text">
-            <p><b>Top Wicket-Taker:</b> Shree Charani (India) - 12 Wickets</p>
-            <p><b>Best Bowling:</b> Deepti Sharma (India) - 5/10 vs Pakistan</p>
-            <p><b>Group Standings:</b> Australia (8 Pts) leads the table</p>
-        </div>
-    </div>
-
-    <!-- Highlights Section -->
-    <div class="box">
-        <h2>🎥 Match Highlights</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-            <iframe style="width: 280px; height: 160px; border-color: #00ffcc;" src="https://www.youtube.com/embed/lJjAknru_Nw"></iframe>
-            <iframe style="width: 280px; height: 160px; border-color: #00ffcc;" src="https://www.youtube.com/embed/69qZPfP3TXU"></iframe>
-        </div>
-    </div>
+<!-- Points Table Section -->
+<div class="stats-container">
+    <h2>Tournament Stats</h2>
+    <table border="1" style="width:100%; text-align:center;">
+        <tr>
+            <th>Team</th>
+            <th>Matches</th>
+            <th>Wins</th>
+            <th>Losses</th>
+        </tr>
+        <tr>
+            <td>Pakistan Women</td>
+            <td>5</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <!-- Aap yahan dusri teams ki info bhi daal sakte hain -->
+    </table>
 </div>
-
-</body>
-</html>
