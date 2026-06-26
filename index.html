@@ -1,17 +1,37 @@
-<h1 style="text-align: center;">Welcome to CricZone</h1>
-<h3 style="text-align: center;">Tournament Stats</h3>
+<!DOCTYPE html>
+<html>
+<body style="background-color: #1a1a1a; color: white; text-align: center; font-family: sans-serif;">
 
-<table border="1" style="width: 100%; text-align: center; border-collapse: collapse;">
-    <tr>
-        <th>Team</th>
-        <th>Matches</th>
-        <th>Wins</th>
-        <th>Losses</th>
-    </tr>
-    <tr>
-        <td>Pakistan Women</td>
-        <td>5</td>
-        <td>1</td>
-        <td>4</td>
-    </tr>
-</table>
+    <h1>CricZone Hub</h1>
+    <div id="score-display" style="padding: 20px;">
+        Data update ho raha hai...
+    </div>
+
+    <script>
+        // Yahan se aap ID badal sakte hain
+        const matchId = '123456'; 
+        const url = 'https://flashlive-sports.p.rapidapi.com/v1/events/player-statistics-alt?locale=en_INT&event_id=' + matchId;
+        
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-host': 'flashlive-sports.p.rapidapi.com',
+                'x-rapidapi-key': '231f3d8023mshbb446d916dea655p174f77jsn9570852ce6a0'
+            }
+        };
+
+        async function fetchScore() {
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                
+                // Agar ID ghalat ho toh ye dikhaye ga
+                document.getElementById('score-display').innerText = "Abhi ye match ID active nahi hai: " + matchId;
+            } catch (error) {
+                document.getElementById('score-display').innerText = "Error: Check karein.";
+            }
+        }
+        fetchScore();
+    </script>
+</body>
+</html>
