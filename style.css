@@ -1,1 +1,83 @@
-// CricZone Hub JavaScript
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0d1117;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 10%;
+    background:#161b22;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#FFD700;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#FFD700;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#ccc;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#FFD700;
+    color:black;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:40px 10%;
+}
+
+.card{
+    background:#161b22;
+    padding:20px;
+    border-radius:12px;
+}
+
+.news{
+    padding:40px 10%;
+}
+
+.news-box{
+    background:#161b22;
+    padding:20px;
+    border-radius:12px;
+}
