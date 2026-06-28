@@ -1,14 +1,31 @@
-// CricZone Hub JavaScript
+// CricZone Hub Premium Script
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("CricZone Hub Loaded Successfully!");
+console.log("🏏 CricZone Hub Loaded Successfully");
 
-    const btn = document.querySelector(".btn");
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
 
-    if (btn) {
-        btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            alert("🏏 Welcome to CricZone Hub!");
-        });
+    const target = document.querySelector(this.getAttribute("href"));
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth"
+      });
     }
+  });
+});
+
+// Card hover animation
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+  card.addEventListener("mouseenter", () => {
+    card.style.transform = "translateY(-8px)";
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translateY(0)";
+  });
 });
