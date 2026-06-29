@@ -17,7 +17,37 @@ async function loadLiveMatches() {
 
     let html = "";
 
-    data.matches.forEach(match => {
+    let html = "";
+
+data.matches.forEach(match => {
+
+html += `
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:20px;">
+
+<div>
+<img src="${match.home_logo}" width="60">
+<h3>${match.home}</h3>
+<p>${match.home_score}</p>
+</div>
+
+<div style="text-align:center;">
+<h2>VS</h2>
+<p>${match.status_text}</p>
+<p>${match.competition}</p>
+</div>
+
+<div>
+<img src="${match.away_logo}" width="60">
+<h3>${match.away}</h3>
+<p>${match.away_score}</p>
+</div>
+
+</div>
+`;
+
+});
+
+container.innerHTML = html;
       html += `
         <div class="card" style="margin-bottom:15px;">
           <h3>${match.homeTeam} vs ${match.awayTeam}</h3>
