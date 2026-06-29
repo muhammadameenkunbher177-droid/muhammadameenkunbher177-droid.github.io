@@ -1,31 +1,39 @@
-// CricZone Hub Premium Script
+console.log("🏏 CricZone Hub Loaded");
 
-console.log("🏏 CricZone Hub Loaded Successfully");
+async function loadLiveMatches() {
+  const container = document.getElementById("liveMatches");
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault();
+  try {
+    const response = await fetch(
+      "https://sportscore.com/api/widget/matches/?sport=cricket&limit=5"
+    );
 
-    const target = document.querySelector(this.getAttribute("href"));
+    const data = await response.json();
 
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
+    if (!data.matches || data.matches.length === 0) {
+      container.innerHTML = "<p>No live matches available.</p>";
+      return;
     }
-  });
-});
 
-// Card hover animation
-const cards = document.querySelectorAll(".card");
+    let html = "";
 
-cards.forEach(card => {
-  card.addEventListener("mouseenter", () => {
-    card.style.transform = "translateY(-8px)";
-  });
+    data.matches.forEach(match => {
+      html += `
+        <div class="card" style="margin-bottom:15px;">
+          <h3>${match.homeTeam} vs ${match.awayTeam}</h3>
+          <p><strong>Status:</strong> ${match.status}</p>
+          <p><strong>Score:</strong> ${match.score || "Not Available"}</p>
+        </div>
+      `;
+    });
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "translateY(0)";
-  });
-});
+    container.innerHTML = html;
+
+  } catch (error) {
+    console.error(error);
+    container.innerHTML = "<p>Unable to load live scores.</p>";
+  }
+}
+
+loadLiveMatches();
+setInterval(loadLiveMatches, 60000);
