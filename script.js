@@ -17,7 +17,40 @@ async function loadLiveMatches() {
 
     let html = "";
 
-    data.matches.forEach(match => {
+    let html = "";
+
+data.typeMatches.forEach(type => {
+
+    // Sirf International aur Women matches
+    if (type.matchType !== "International" && type.matchType !== "Women") {
+        return;
+    }
+
+    type.seriesMatches.forEach(series => {
+
+        if (!series.seriesAdWrapper) return;
+
+        series.seriesAdWrapper.matches.forEach(match => {
+
+            const info = match.matchInfo;
+
+            html += `
+            <div class="card">
+                <h2>${info.team1.teamName} VS ${info.team2.teamName}</h2>
+                <p><strong>${info.seriesName}</strong></p>
+                <p>${info.matchDesc}</p>
+                <p>${info.status}</p>
+                <p>${info.venueInfo.city}</p>
+            </div>
+            `;
+
+        });
+
+    });
+
+});
+
+container.innerHTML = html;
       html += `
       <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:15px;">
 
