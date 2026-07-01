@@ -1,88 +1,108 @@
 console.log("🏏 CricZone Hub Loaded");
 
+const API_KEY = "YOUR_RAPIDAPI_KEY";
+
 async function loadLiveMatches() {
-  const container = document.getElementById("liveMatches");
 
-  try {
-    const response = await fetch(
-      "https://sportscore.com/api/widget/matches/?sport=cricket&limit=5"
-    );
+    const container = document.getElementById("liveMatches");
 
-    const data = await response.json();
+    container.innerHTML = "Loading...";
 
-    if (!data.matches || data.matches.length === 0) {
-      container.innerHTML = "<p>No live matches available.</p>";
-      return;
-    }
+    try {
 
-    let html = "";
+        const response = await fetch(
+            "https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live",
+            {
+                method: "GET",
+                headers: {
+                    "X-RapidAPI-Key": API_KEY,
+                    "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
+                }
+            }
+        );
 
-    let html = "";
+        const data = await response.json();
 
-data.typeMatches.forEach(type => {
+        let html = "";
 
-    // Sirf International aur Women matches
-    if (type.matchType !== "International" && type.matchType !== "Women") {
-        return;
-    }
+        data.typeMatches.forEach(type => {
 
-    type.seriesMatches.forEach(series => {
+            // Sirf International aur Women matches
+            if (
+                type.matchType !== "International" &&
+                type.matchType !== "Women"
+            ) return;
 
-        if (!series.seriesAdWrapper) return;
+            type.seriesMatches.forEach(series => {
 
-        series.seriesAdWrapper.matches.forEach(match => {
+                if (!series.seriesAdWrapper) return;
 
-            const info = match.matchInfo;
+                series.seriesAdWrapper.matches.forEach(match => {
 
-            html += `
-            <div class="card">
-                <h2>${info.team1.teamName} VS ${info.team2.teamName}</h2>
-                <p><strong>${info.seriesName}</strong></p>
-                <p>${info.matchDesc}</p>
-                <p>${info.status}</p>
-                <p>${info.venueInfo.city}</p>
-            </div>
-            `;
+                    const info = match.matchInfo;
+
+                    const score1 =
+                        match.matchScore?.team1Score?.inngs1?.runs ?? "-";
+
+                    const wickets1 =
+                        match.matchScore?.team1Score?.inngs1?.wickets ?? "";
+
+                    const overs1 =
+                        match.matchScore?.team1Score?.inngs1?.overs ?? "";
+
+                    const score2 =
+                        match.matchScore?.team2Score?.inngs1?.runs ?? "-";
+
+                    const wickets2 =
+                        match.matchScore?.team2Score?.inngs1?.wickets ?? "";
+
+                    const overs2 =
+                        match.matchScore?.team2Score?.inngs1?.overs ?? "";
+
+                    html += `
+                    <div class="card">
+
+                        <h2>${info.team1.teamName} vs ${info.team2.teamName}</h2>
+
+                        <p><strong>${info.seriesName}</strong></p>
+
+                        <p>${info.matchDesc}</p>
+
+                        <p>${info.status}</p>
+
+                        <p>
+                        ${score1}/${wickets1} (${overs1})
+                        &nbsp; | &nbsp;
+                        ${score2}/${wickets2} (${overs2})
+                        </p>
+
+                        <p>📍 ${info.venueInfo.city}</p>
+
+                    </div>
+                    `;
+
+                });
+
+            });
 
         });
 
-    });
+        if (html === "") {
+            html = "<h3>No International Matches Available</h3>";
+        }
 
-});
+        container.innerHTML = html;
 
-container.innerHTML = html;
-      html += `
-      <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:15px;">
+    } catch (error) {
 
-        <div>
-          <img src="${match.home_logo}" width="60">
-          <h3>${match.home}</h3>
-          <p>${match.home_score}</p>
-        </div>
+        console.log(error);
 
-        <div style="text-align:center;">
-          <h2>VS</h2>
-          <p>${match.status_text}</p>
-          <p>${match.competition}</p>
-        </div>
+        container.innerHTML =
+            "<h3>Unable to load matches.</h3>";
+    }
 
-        <div>
-          <img src="${match.away_logo}" width="60">
-          <h3>${match.away}</h3>
-          <p>${match.away_score}</p>
-        </div>
-
-      </div>
-      `;
-    });
-
-    container.innerHTML = html;
-
-  } catch (error) {
-    console.error(error);
-    container.innerHTML = "<p>Unable to load live scores.</p>";
-  }
 }
 
 loadLiveMatches();
+
 setInterval(loadLiveMatches, 60000);
