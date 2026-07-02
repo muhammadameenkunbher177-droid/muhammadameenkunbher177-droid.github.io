@@ -1,108 +1,245 @@
-console.log("🏏 CricZone Hub Loaded");
+console.log("🏏 CricZone Hub V2 Loaded");
 
-const API_KEY = "YOUR_RAPIDAPI_KEY";
+// ============================
+// LIVE MATCHES
+// ============================
 
 async function loadLiveMatches() {
 
-    const container = document.getElementById("liveMatches");
+const container = document.getElementById("liveMatches");
 
-    container.innerHTML = "Loading...";
+if (!container) return;
 
-    try {
+try {
 
-        const response = await fetch(
-            "https://cricbuzz-cricket.p.rapidapi.com/matches/v1/live",
-            {
-                method: "GET",
-                headers: {
-                    "X-RapidAPI-Key": API_KEY,
-                    "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
-                }
-            }
-        );
+const response = await fetch(
+"https://sportscore.com/api/widget/matches/?sport=cricket&limit=5"
+);
 
-        const data = await response.json();
+const data = await response.json();
 
-        let html = "";
+if (!data.matches || data.matches.length === 0) {
 
-        data.typeMatches.forEach(type => {
+container.innerHTML =
+"<p>No live cricket matches available.</p>";
 
-            // Sirf International aur Women matches
-            if (
-                type.matchType !== "International" &&
-                type.matchType !== "Women"
-            ) return;
+return;
 
-            type.seriesMatches.forEach(series => {
+}
 
-                if (!series.seriesAdWrapper) return;
+let html = "";
 
-                series.seriesAdWrapper.matches.forEach(match => {
+data.matches.forEach(match => {
 
-                    const info = match.matchInfo;
+html += `
+<div class="card">
 
-                    const score1 =
-                        match.matchScore?.team1Score?.inngs1?.runs ?? "-";
+<div style="display:flex;justify-content:space-between;align-items:center;">
 
-                    const wickets1 =
-                        match.matchScore?.team1Score?.inngs1?.wickets ?? "";
+<div style="text-align:center;">
 
-                    const overs1 =
-                        match.matchScore?.team1Score?.inngs1?.overs ?? "";
+<img src="${match.home_logo}" width="60">
 
-                    const score2 =
-                        match.matchScore?.team2Score?.inngs1?.runs ?? "-";
+<h3>${match.home}</h3>
 
-                    const wickets2 =
-                        match.matchScore?.team2Score?.inngs1?.wickets ?? "";
+<p>${match.home_score || "-"}</p>
 
-                    const overs2 =
-                        match.matchScore?.team2Score?.inngs1?.overs ?? "";
+</div>
 
-                    html += `
-                    <div class="card">
+<div style="text-align:center;">
 
-                        <h2>${info.team1.teamName} vs ${info.team2.teamName}</h2>
+<h2>VS</h2>
 
-                        <p><strong>${info.seriesName}</strong></p>
+<p>${match.status_text}</p>
 
-                        <p>${info.matchDesc}</p>
+<p>${match.competition}</p>
 
-                        <p>${info.status}</p>
+</div>
 
-                        <p>
-                        ${score1}/${wickets1} (${overs1})
-                        &nbsp; | &nbsp;
-                        ${score2}/${wickets2} (${overs2})
-                        </p>
+<div style="text-align:center;">
 
-                        <p>📍 ${info.venueInfo.city}</p>
+<img src="${match.away_logo}" width="60">
 
-                    </div>
-                    `;
+<h3>${match.away}</h3>
 
-                });
+<p>${match.away_score || "-"}</p>
 
-            });
+</div>
 
-        });
+</div>
 
-        if (html === "") {
-            html = "<h3>No International Matches Available</h3>";
-        }
+</div>
+`;
 
-        container.innerHTML = html;
+});
 
-    } catch (error) {
+container.innerHTML = html;
 
-        console.log(error);
+}
 
-        container.innerHTML =
-            "<h3>Unable to load matches.</h3>";
-    }
+catch(error){
+
+console.log(error);
+
+container.innerHTML =
+"<p>Unable to load live scores.</p>";
+
+}
 
 }
 
 loadLiveMatches();
 
-setInterval(loadLiveMatches, 60000);
+// Refresh every minute
+
+setInterval(loadLiveMatches,60000);
+// ============================
+// LIVE CLOCK
+// ============================
+
+function updateClock() {
+
+  const clock = document.getElementById("liveClock");
+
+  if (!clock) return;
+
+  const now = new Date();
+
+  clock.innerHTML = now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock, 1000);
+
+updateClock();
+
+
+// ============================
+// ASIA CUP COUNTDOWN
+// ============================
+
+const countdown = document.getElementById("countdown");
+
+if (countdown) {
+
+  const targetDate = new Date("September 1, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+
+    const now = new Date().getTime();
+
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+
+      countdown.innerHTML = "🏆 Asia Cup Has Started!";
+
+      return;
+
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdown.innerHTML =
+      `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+
+  }, 1000);
+
+}
+
+
+// ============================
+// BACK TO TOP BUTTON
+// ============================
+
+const topBtn = document.createElement("button");
+
+topBtn.innerHTML = "⬆";
+
+topBtn.id = "topBtn";
+
+document.body.appendChild(topBtn);
+
+Object.assign(topBtn.style, {
+  position: "fixed",
+  bottom: "20px",
+  right: "20px",
+  padding: "12px 16px",
+  fontSize: "20px",
+  border: "none",
+  borderRadius: "50%",
+  cursor: "pointer",
+  display: "none",
+  background: "#FFD700",
+  color: "#000",
+  zIndex: "9999"
+});
+
+window.addEventListener("scroll", () => {
+
+  if (window.scrollY > 300) {
+
+    topBtn.style.display = "block";
+
+  } else {
+
+    topBtn.style.display = "none";
+
+  }
+
+});
+
+topBtn.addEventListener("click", () => {
+
+  window.scrollTo({
+
+    top: 0,
+
+    behavior: "smooth"
+
+  });
+
+});
+
+
+// ============================
+// FADE-IN ANIMATION
+// ============================
+
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.style.opacity = "1";
+
+      entry.target.style.transform = "translateY(0)";
+
+    }
+
+  });
+
+});
+
+sections.forEach(section => {
+
+  section.style.opacity = "0";
+
+  section.style.transform = "translateY(30px)";
+
+  section.style.transition = "all .8s ease";
+
+  observer.observe(section);
+
+});
+
+console.log("✅ CricZone Hub V2 Ready");
